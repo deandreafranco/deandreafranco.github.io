@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="ejercicio clave numerica">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=1" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>ejercicioclavenumerica</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" >   
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html"> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cvfrancoweb.html">CV</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="descubrirclavenumericamiercoles21agost.html">Juego</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ejercicioformularioytabla.html">Tabla y Formulario</a>
+        </li>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<br>
+<br>
+	<h1>Descubrir clave numerica en tres numeros</h1>
+	<p>Instrucciones</p>
+	<ul>
+		<li>Ingresar tres numeros Centena, Decena y unidad</li>
+		<li>No pueden ser iguales o estar vacio, muestra alerta</li>
+		<li>Si el numero esta en la posicion correcta te lo dira</li>
+	</ul>
+
+	<form action="post">
+		<label for="centena">Centena</label>
+		<input type="number" id="centenaF" name="centena">
+		<label for="decena">Decena</label>
+		<input type="number" id="decenaF" name="decena">
+		<label for="unidad">Unidad</label>
+		<input type="number" id="unidadF" name="unidad">
+		<input type="button" value="enviar" onClick="Comprobar()">
+		<input type="reset" value="Borrar" onClick="Borrar()">
+	</form>
+	<p id="alerta" style=""></p>
+	<script>
+		var unidad = 3;
+		var decena = 2;
+		var centena = 1;
+		var mensajeAlerta = '';
+
+		function Comprobar(){
+
+			var centenaF = document.getElementById("centenaF").value;
+			var decenaF = document.getElementById("decenaF").value;
+			var unidadF = document.getElementById("unidadF").value;
+
+			if ((centenaF == "") ||(decenaF =="") || (unidadF == "")){
+				alert("Ningun campo puede estar vacio");
+			}else if((centenaF == decenaF) || (centenaF == unidadF) || (decenaF == unidadF)){
+				alert("Ningun valor puede estar repetido");
+			} else { if ((unidad == unidadF) && (decena == decenaF) && (centena == centenaF)){
+				document.getElementById("alerta").innerHTML = '<p style="color: green; font-size: 40px; text-align: center;">' + centena + decena + unidad + ' contraseña correcta </p>';
+
+			} else {
+				if (centena == centenaF) {
+					mensajeAlerta += centenaF + ' en centena es correcto <br>';
+				} else {
+					mensajeAlerta += centenaF + ' en centena es incorrecto <br>';
+				} 
+
+				if (decena == decenaF) {
+					mensajeAlerta += decenaF + ' en decena es correcto <br>';
+				} else {
+					mensajeAlerta += decenaF + ' en decena es incorrecto <br>';
+				} 
+
+				if (unidad == unidadF) {
+					mensajeAlerta += unidadF + ' en unidad es correcto <br>';
+				} else {
+					mensajeAlerta += unidadF + ' en unidad es incorrecto <br>';
+				}
+				document.getElementById("alerta").innerHTML = mensajeAlerta;
+				mensajeAlerta = '';
+
+			}
+		}
+	}
+	function Borrar (){
+		document.getElementById('alerta').innerHTML = '';
+	}
+
+</script>
+</body>
+
+</html>
